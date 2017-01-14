@@ -1,15 +1,15 @@
 #!/bin/bash -e
 
-sm() {
-    eval "_sm_$@"
+po() {
+    eval "_po_$@"
 }
 
-_sm_help() {
-    echo "Usage: sm <command>"
+_po_help() {
+    echo "Usage: po <command>"
     echo "Commands:"
     echo "  help          Print this help dialog."
-    echo "  reload        Reload sm."
-    echo "  env           Print docker env (used by 'sm connect')."
+    echo "  reload        Reload po."
+    echo "  env           Print docker env (used by 'po connect')."
     echo "  connect       Point docker to remote stevemostovoy.me host."
     echo "  disconnect    Point docker to local host."
     echo "  ssh           SSH into remote stevemostovoy.me host."
@@ -23,19 +23,19 @@ _sm_help() {
     echo "  up            Launch the containers with docker-compose."
 }
 
-_sm_reload() {
+_po_reload() {
     source "$BASH_SOURCE"
 }
 
-_sm_env() {
+_po_env() {
     docker-machine env stevemostovoy.me
 }
 
-_sm_connect() {
+_po_connect() {
 	eval $(docker-machine env stevemostovoy.me)
 }
 
-_sm_disconnect() {
+_po_disconnect() {
     unset DOCKER_TLS_VERIFY
     unset DOCKER_HOST
     unset DOCKER_CERT_PATH
@@ -43,55 +43,55 @@ _sm_disconnect() {
     unset DOCKER_API_VERSION
 }
 
-_sm_ssh() {
+_po_ssh() {
     docker-machine ssh stevemostovoy.me "$@"
 }
 
-_sm_shell() {
+_po_shell() {
     docker exec -it $(docker-compose ps -q stevemostovoy.me) sh
 }
 
-_sm_explore() {
+_po_explore() {
     docker run -it --entrypoint sh stevemostovoy.me
 }
 
-_sm_build() {
+_po_build() {
     docker build -t stevemostovoy/stevemostovoy.me .
 }
 
-_sm_push() {
-    _sm_ssh docker push stevemostovoy/stevemostovoy.me
+_po_push() {
+    _po_ssh docker push stevemostovoy/stevemostovoy.me
 }
 
-_sm_pull() {
+_po_pull() {
     docker-compose pull
 }
 
-_sm_attach() {
+_po_attach() {
     docker-compose up
 }
 
-_sm_all() {
-    _sm_build
-    _sm_attach
+_po_all() {
+    _po_build
+    _po_attach
 }
 
-_sm_up() {
+_po_up() {
     docker-compose up -d
 }
 
-export -f sm
-export -f _sm_help
-export -f _sm_reload
-export -f _sm_connect
-export -f _sm_disconnect
-export -f _sm_ssh
-export -f _sm_shell
-export -f _sm_explore
-export -f _sm_build
-export -f _sm_push
-export -f _sm_pull
-export -f _sm_up
-export -f _sm_all
+export -f po
+export -f _po_help
+export -f _po_reload
+export -f _po_connect
+export -f _po_disconnect
+export -f _po_ssh
+export -f _po_shell
+export -f _po_explore
+export -f _po_build
+export -f _po_push
+export -f _po_pull
+export -f _po_up
+export -f _po_all
 
-echo "stevemostovoy.me cli loaded. Use 'sm help' for info."
+echo "stevemostovoy.me cli loaded. Use 'po help' for info."
