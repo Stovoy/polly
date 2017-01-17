@@ -83,6 +83,7 @@ _po_up() {
 export -f po
 export -f _po_help
 export -f _po_reload
+export -f _po_env
 export -f _po_connect
 export -f _po_disconnect
 export -f _po_ssh
