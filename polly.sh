@@ -94,4 +94,4 @@ export -f _po_pull
 export -f _po_up
 export -f _po_all
 
-echo "stevemostovoy.me cli loaded. Use 'po help' for info."
+echo "polly cli loaded. Use 'po help' for info."
