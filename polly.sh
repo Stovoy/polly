@@ -91,6 +91,7 @@ export -f _po_explore
 export -f _po_build
 export -f _po_push
 export -f _po_pull
+export -f _po_attach
 export -f _po_up
 export -f _po_all
 
