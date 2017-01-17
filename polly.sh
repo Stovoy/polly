@@ -39,12 +39,12 @@ _po_connect-local() {
     unset DOCKER_API_VERSION
     
     export DOCKER_HOST="tcp://localhost:2375"
-    export DIR_PREFIX="c:"
+    export SSL_DIR_PREFIX="c:"
 }
 
 _po_connect-remote() {
     eval $(docker-machine env stevemostovoy.me)
-    unset DIR_PREFIX
+    unset SSL_DIR_PREFIX
 }
 
 _po_ssh() {
