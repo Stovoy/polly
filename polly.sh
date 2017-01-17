@@ -41,9 +41,7 @@ _po_disconnect() {
     unset DOCKER_CERT_PATH
     unset DOCKER_MACHINE_NAME
     unset DOCKER_API_VERSION
-}
-
-_po_local() {
+    
     export DOCKER_HOST="tcp://localhost:2375"
 }
 
@@ -90,7 +88,6 @@ export -f _po_reload
 export -f _po_env
 export -f _po_connect
 export -f _po_disconnect
-export -f _po_local
 export -f _po_ssh
 export -f _po_shell
 export -f _po_explore
